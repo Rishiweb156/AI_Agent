@@ -14,26 +14,22 @@ class ClassifierAgent:
         print("ClassifierAgent: Initialized.")
 
     def _detect_format(self, input_data):
-        # PRIORITY 1: Check if input_data is a path to an existing file
         if os.path.exists(input_data):
-            # First, check by file extension (most reliable for common types)
             if input_data.lower().endswith(".json"):
                 print(f"ClassifierAgent: Detected JSON format for {input_data} by extension.")
                 return "JSON"
             elif input_data.lower().endswith(".pdf"):
                 print(f"ClassifierAgent: Detected PDF format for {input_data} by extension.")
                 return "PDF"
-            elif input_data.lower().endswith((".eml", ".txt")): # Handle common email/text extensions
+            elif input_data.lower().endswith((".eml", ".txt")): # Handles common email/text extensions
                 print(f"ClassifierAgent: Detected Email/Text format for {input_data} by extension.")
                 return "Email"
-            
-            # Fallback to python-magic for other or less common file types if extension check fails
             try:
                 mime_type = magic.Magic(mime=True).from_file(input_data)
-                if 'json' in mime_type: # Redundant but good as a double-check if extension failed
+                if 'json' in mime_type: 
                     print(f"ClassifierAgent: Detected JSON format for {input_data} via magic (fallback).")
                     return "JSON"
-                elif 'pdf' in mime_type: # Redundant but good as a double-check if extension failed
+                elif 'pdf' in mime_type:
                     print(f"ClassifierAgent: Detected PDF format for {input_data} via magic (fallback).")
                     return "PDF"
                 elif 'text' in mime_type or 'message' in mime_type:
@@ -45,7 +41,6 @@ class ClassifierAgent:
             except Exception as e:
                 print(f"ClassifierAgent: Error using python-magic for {input_data}: {e}. Falling back to 'Other'.")
                 return "Other"
-        # PRIORITY 2: If not a file, assume it's raw string content
         elif isinstance(input_data, str):
             try:
                 json.loads(input_data)
@@ -54,10 +49,7 @@ class ClassifierAgent:
             except json.JSONDecodeError:
                 print("ClassifierAgent: Assuming Email format from raw string input (not valid JSON).")
                 return "Email"
-        return "Unknown" # Fallback if none of the above
-
-    # Rest of the ClassifierAgent class remains the same from the last successful update
-    # ... (_extract_text_from_pdf, _extract_content_for_llm, classify_and_route methods) ...
+        return "Unknown"
 
     def _extract_text_from_pdf(self, pdf_path):
         text_content = ""
@@ -80,7 +72,7 @@ class ClassifierAgent:
         content = None
         error_details = None
 
-        if detected_format == "PDF": # Now this branch will be correctly hit for PDF files
+        if detected_format == "PDF": 
             content, pdf_error = self._extract_text_from_pdf(input_data)
             if pdf_error:
                 error_details = {"pdf_extraction_error": pdf_error}
