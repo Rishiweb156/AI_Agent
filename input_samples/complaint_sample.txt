@@ -1,0 +1,7 @@
+From: Jane Smith <jane.s@example.net>
+Subject: Complaint about Order #ORD12345
+
+I am writing to complain about my recent order, ORD12345.
+The product arrived damaged and is unusable. This is unacceptable.
+I expect a full refund or a replacement shipped immediately.
+This is very urgent!

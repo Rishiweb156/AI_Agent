@@ -1,0 +1,12 @@
+{
+    "invoice_id": "INV-2025-001",
+    "vendor_name": "Global Supplies Ltd.",
+    "customer_name": "Tech Solutions Inc.",
+    "total_amount": 1250.75,
+    "issue_date": "2025-05-30",
+    "items": [
+        {"item_name": "Wireless Mouse", "quantity": 5, "unit_price": 25.00},
+        {"item_name": "Keyboard", "quantity": 5, "unit_price": 75.00},
+        {"item_name": "Monitor", "quantity": 2, "unit_price": 375.00}
+    ]
+}

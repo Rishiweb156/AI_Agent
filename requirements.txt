@@ -1,0 +1,3 @@
+openai
+pypdf2 # For PDF text extraction
+python-magic # For basic file type detection 

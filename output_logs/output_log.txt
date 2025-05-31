@@ -1,0 +1,407 @@
+SharedMemory: Initialized (In-Memory Dictionary).
+--- Multi-Agent AI System Demo ---
+ClassifierAgent: Initialized.
+JSONAgent: Initialized.
+EmailAgent: Initialized.
+Using sample files from: input_samples
+
+
+--- Processing Input: Invoice File ---
+File: input_samples\invoice_sample.json
+SharedMemory: Created entry ID 975d8f1a-e7c7-4ca6-ad91-e5f0ef54f2b4 for source 'Invoice File'.
+ClassifierAgent: Detected JSON format for input_samples\invoice_sample.json by extension.
+ClassifierAgent: Sending content for intent classification (format: JSON)...
+LLMClient: Faking intent classification for text starting with: '{
+    "invoice_id": "INV-2025-001",
+    "vendor_name": "Global Supplies Ltd.",
+    "customer_name": ...'
+SharedMemory: Updated entry ID 975d8f1a-e7c7-4ca6-ad91-e5f0ef54f2b4 by agent 'ClassifierAgent'.
+Classifier Output - ID: 975d8f1a-e7c7-4ca6-ad91-e5f0ef54f2b4, Format: JSON, Intent: Invoice
+SharedMemory: Updated entry ID 975d8f1a-e7c7-4ca6-ad91-e5f0ef54f2b4 by agent 'JSONAgent'.
+SharedMemory: Updated entry ID 975d8f1a-e7c7-4ca6-ad91-e5f0ef54f2b4 by agent 'JSONAgent'.
+JSONAgent: Processed ID 975d8f1a-e7c7-4ca6-ad91-e5f0ef54f2b4. Extracted: 6 fields. Anomalies: 0
+--- End Processing Input ---
+
+--- Processing Input: RFQ Email File ---
+File: input_samples\rfq_sample.eml
+SharedMemory: Created entry ID 5dd87b99-11e1-40f2-a250-0fa0e4599881 for source 'RFQ Email File'.
+ClassifierAgent: Detected Email/Text format for input_samples\rfq_sample.eml by extension.
+ClassifierAgent: Sending content for intent classification (format: Email)...
+LLMClient: Faking intent classification for text starting with: 'From: John Doe <john.doe@example.com>
+Subject: Urgent Request for Quotation - Product X and Product ...'
+SharedMemory: Updated entry ID 5dd87b99-11e1-40f2-a250-0fa0e4599881 by agent 'ClassifierAgent'.
+Classifier Output - ID: 5dd87b99-11e1-40f2-a250-0fa0e4599881, Format: Email, Intent: RFQ
+SharedMemory: Updated entry ID 5dd87b99-11e1-40f2-a250-0fa0e4599881 by agent 'EmailAgent'.
+LLMClient: Faking urgency detection...
+EmailAgent: Attempting to extract details for intent 'RFQ' from email by 'John Doe'.
+LLMClient: Faking email detail extraction for intent 'RFQ'...
+SharedMemory: Updated entry ID 5dd87b99-11e1-40f2-a250-0fa0e4599881 by agent 'EmailAgent'.
+EmailAgent: Processed ID 5dd87b99-11e1-40f2-a250-0fa0e4599881. Sender: John Doe, Urgency: High
+--- End Processing Input ---
+
+--- Processing Input: Complaint Text File ---
+File: input_samples\complaint_sample.txt
+SharedMemory: Created entry ID ae2bd99e-e717-4cf9-b146-f14cb7a6d347 for source 'Complaint Text File'.
+ClassifierAgent: Detected Email/Text format for input_samples\complaint_sample.txt by extension.
+ClassifierAgent: Sending content for intent classification (format: Email)...
+LLMClient: Faking intent classification for text starting with: 'From: Jane Smith <jane.s@example.net>
+Subject: Complaint about Order #ORD12345
+
+I am writing to comp...'
+SharedMemory: Updated entry ID ae2bd99e-e717-4cf9-b146-f14cb7a6d347 by agent 'ClassifierAgent'.
+Classifier Output - ID: ae2bd99e-e717-4cf9-b146-f14cb7a6d347, Format: Email, Intent: Complaint
+SharedMemory: Updated entry ID ae2bd99e-e717-4cf9-b146-f14cb7a6d347 by agent 'EmailAgent'.
+LLMClient: Faking urgency detection...
+EmailAgent: Attempting to extract details for intent 'Complaint' from email by 'Jane Smith'.
+LLMClient: Faking email detail extraction for intent 'Complaint'...
+SharedMemory: Updated entry ID ae2bd99e-e717-4cf9-b146-f14cb7a6d347 by agent 'EmailAgent'.
+EmailAgent: Processed ID ae2bd99e-e717-4cf9-b146-f14cb7a6d347. Sender: Jane Smith, Urgency: High
+--- End Processing Input ---
+
+--- Processing Input: Raw JSON Order Data ---
+Raw Content Preview: {"order_id": "ORD-XYZ", "customer_details": {"name": "Raw JSON Test Inc.", "email": "test@raw.com"},...
+SharedMemory: Created entry ID 255b25d7-5b41-4442-bc65-106b43623a87 for source 'Raw JSON Order Data'.
+ClassifierAgent: Detected JSON format from raw string input.
+ClassifierAgent: Sending content for intent classification (format: JSON)...
+LLMClient: Faking intent classification for text starting with: '{"order_id": "ORD-XYZ", "customer_details": {"name": "Raw JSON Test Inc.", "email": "test@raw.com"},...'
+SharedMemory: Updated entry ID 255b25d7-5b41-4442-bc65-106b43623a87 by agent 'ClassifierAgent'.
+Classifier Output - ID: 255b25d7-5b41-4442-bc65-106b43623a87, Format: JSON, Intent: Other
+SharedMemory: Updated entry ID 255b25d7-5b41-4442-bc65-106b43623a87 by agent 'JSONAgent'.
+SharedMemory: Updated entry ID 255b25d7-5b41-4442-bc65-106b43623a87 by agent 'JSONAgent'.
+JSONAgent: Processed ID 255b25d7-5b41-4442-bc65-106b43623a87. Extracted: 4 fields. Anomalies: 1
+--- End Processing Input ---
+
+--- Processing Input: Raw Email Inquiry ---
+Raw Content Preview: From: noreply@example.com
+Subject: General Inquiry
+
+Hello, I have a question about your services. Ca...
+SharedMemory: Created entry ID a14cb4e9-1444-4e7d-a52f-86c396ebb1a7 for source 'Raw Email Inquiry'.
+ClassifierAgent: Assuming Email format from raw string input (not valid JSON).
+ClassifierAgent: Sending content for intent classification (format: Email)...
+LLMClient: Faking intent classification for text starting with: 'From: noreply@example.com
+Subject: General Inquiry
+
+Hello, I have a question about your services. Ca...'
+SharedMemory: Updated entry ID a14cb4e9-1444-4e7d-a52f-86c396ebb1a7 by agent 'ClassifierAgent'.
+Classifier Output - ID: a14cb4e9-1444-4e7d-a52f-86c396ebb1a7, Format: Email, Intent: Inquiry
+SharedMemory: Updated entry ID a14cb4e9-1444-4e7d-a52f-86c396ebb1a7 by agent 'EmailAgent'.
+LLMClient: Faking urgency detection...
+EmailAgent: Attempting to extract details for intent 'Inquiry' from email by 'noreply@example.com'.
+LLMClient: Faking email detail extraction for intent 'Inquiry'...
+LLMClient: No specific extraction prompt for intent 'Inquiry'. Returning generic data.
+SharedMemory: Updated entry ID a14cb4e9-1444-4e7d-a52f-86c396ebb1a7 by agent 'EmailAgent'.
+EmailAgent: Processed ID a14cb4e9-1444-4e7d-a52f-86c396ebb1a7. Sender: noreply@example.com, Urgency: Low
+--- End Processing Input ---
+
+--- Processing Input: PDF Document File ---
+File: input_samples\sample.pdf
+SharedMemory: Created entry ID bde55650-6a0e-40fe-bfbf-50461ed691c5 for source 'PDF Document File'.
+ClassifierAgent: Detected PDF format for input_samples\sample.pdf by extension.
+ClassifierAgent: Successfully extracted text from PDF input_samples\sample.pdf.
+ClassifierAgent: Sending content for intent classification (format: PDF)...
+LLMClient: Faking intent classification for text starting with: '
+...'
+SharedMemory: Updated entry ID bde55650-6a0e-40fe-bfbf-50461ed691c5 by agent 'ClassifierAgent'.
+Classifier Output - ID: bde55650-6a0e-40fe-bfbf-50461ed691c5, Format: PDF, Intent: Other
+PDF 'PDF Document File' classified with intent 'Other'. Further PDF-specific data extraction agent not implemented in this demo beyond text for intent.      
+SharedMemory: Updated entry ID bde55650-6a0e-40fe-bfbf-50461ed691c5 by agent 'PDFAgent_Placeholder'.
+--- End Processing Input ---
+
+
+--- Shared Memory Log ---
+SharedMemory: Retrieved entry ID 975d8f1a-e7c7-4ca6-ad91-e5f0ef54f2b4.
+
+Processing ID: 975d8f1a-e7c7-4ca6-ad91-e5f0ef54f2b4
+   Input Source: Invoice File
+   Entry Time: 2025-05-31T17:49:11.489173+00:00
+   Detected Format: JSON
+   Classified Intent: Invoice
+   Classifier Status: Classified
+   Last Updated: 2025-05-31T17:49:11.498860+00:00
+   Agent Stages:
+     Agent: ClassifierAgent
+       status_classifier: Classified
+       input_source: Invoice File
+       detected_format: JSON
+       classified_intent: Invoice
+       raw_content_preview: {
+    "invoice_id": "INV-2025-001",
+    "vendor_name": "Global Supplies Ltd.",
+    "customer_name": "Tech Solutions Inc.",
+    "total_amount": 1250.75,
+    "issue_date": "2025-05-30",
+    "items": [
+ ...
+       text_used_for_intent: {
+    "invoice_id": "INV-2025-001",
+    "vendor_name": "Global Supplies Ltd.",
+    "customer_name": "Tech Solutions Inc.",
+    "total_amount": 1250.75,
+    "issue_date": "2025-05-30",
+    "items": [
+ ...
+       timestamp: 2025-05-31T17:49:11.489173+00:00
+     Agent: JSONAgent
+       status: Processed
+       intent_received: Invoice
+       timestamp: 2025-05-31T17:49:11.498860+00:00
+       extracted_fields:
+{
+        "invoice_id": "INV-2025-001",
+        "vendor_name": "Global Supplies Ltd.",
+        "customer_name": "Tech Solutions Inc.",
+        "total_amount": 1250.75,
+        "issue_date": "2025-05-30",
+        "items": [
+                {
+                        "item_name": "Wireless Mouse",
+                        "quantity": 5,
+                        "unit_price": 25.0
+                },
+                {
+                        "item_name": "Keyboard",
+                        "quantity": 5,
+                        "unit_price": 75.0
+                },
+                {
+                        "item_name": "Monitor",
+                        "quantity": 2,
+                        "unit_price": 375.0
+                }
+        ]
+}
+       anomalies_or_missing_fields:
+[]
+SharedMemory: Retrieved entry ID 5dd87b99-11e1-40f2-a250-0fa0e4599881.
+
+Processing ID: 5dd87b99-11e1-40f2-a250-0fa0e4599881
+   Input Source: RFQ Email File
+   Entry Time: 2025-05-31T17:49:11.498860+00:00
+   Detected Format: Email
+   Classified Intent: RFQ
+   Classifier Status: Classified
+   Last Updated: 2025-05-31T17:49:11.503356+00:00
+   Agent Stages:
+     Agent: ClassifierAgent
+       status_classifier: Classified
+       input_source: RFQ Email File
+       detected_format: Email
+       classified_intent: RFQ
+       raw_content_preview: From: John Doe <john.doe@example.com>
+Subject: Urgent Request for Quotation - Product X and Product Y
+
+Dear Sales Team,
+
+We are interested in obtaining a quotation for the following items:
+1. Product ...
+       text_used_for_intent: From: John Doe <john.doe@example.com>
+Subject: Urgent Request for Quotation - Product X and Product Y
+
+Dear Sales Team,
+
+We are interested in obtaining a quotation for the following items:
+1. Product ...
+       timestamp: 2025-05-31T17:49:11.501091+00:00
+     Agent: EmailAgent
+       status: Processed
+       intent_received: RFQ
+       timestamp: 2025-05-31T17:49:11.503356+00:00
+       sender: John Doe
+       urgency: High
+       llm_extracted_details:
+{
+        "specific_requirements": "Urgent delivery"
+}
+       crm_style_output:
+{
+        "source_email_sender": "John Doe",
+        "detected_intent": "RFQ",
+        "assessed_urgency": "High",
+        "extracted_information": {
+                "specific_requirements": "Urgent delivery"
+        },
+        "full_email_preview": "From: John Doe <john.doe@example.com>
+Subject: Urgent Request for Quotation - Product X and Product Y
+
+Dear Sales Team,
+
+We are interested in obtaining a quotation for the following items:
+1. Product X - 100 units
+2. Product Y - 50 units
+
+Please provide pricing and availability at your earliest convenience.
+Our deadline for this project is next Friday.
+
+Regards,
+John Doe
+Procurement Manager..."
+}
+SharedMemory: Retrieved entry ID ae2bd99e-e717-4cf9-b146-f14cb7a6d347.
+
+Processing ID: ae2bd99e-e717-4cf9-b146-f14cb7a6d347
+   Input Source: Complaint Text File
+   Entry Time: 2025-05-31T17:49:11.503716+00:00
+   Detected Format: Email
+   Classified Intent: Complaint
+   Classifier Status: Classified
+   Last Updated: 2025-05-31T17:49:11.506851+00:00
+   Agent Stages:
+     Agent: ClassifierAgent
+       status_classifier: Classified
+       input_source: Complaint Text File
+       detected_format: Email
+       classified_intent: Complaint
+       raw_content_preview: From: Jane Smith <jane.s@example.net>
+Subject: Complaint about Order #ORD12345
+
+I am writing to complain about my recent order, ORD12345.
+The product arrived damaged and is unusable. This is unaccepta...
+       text_used_for_intent: From: Jane Smith <jane.s@example.net>
+Subject: Complaint about Order #ORD12345
+
+I am writing to complain about my recent order, ORD12345.
+The product arrived damaged and is unusable. This is unaccepta...
+       timestamp: 2025-05-31T17:49:11.505723+00:00
+     Agent: EmailAgent
+       status: Processed
+       intent_received: Complaint
+       timestamp: 2025-05-31T17:49:11.506851+00:00
+       sender: Jane Smith
+       urgency: High
+       llm_extracted_details:
+{}
+       crm_style_output:
+{
+        "source_email_sender": "Jane Smith",
+        "detected_intent": "Complaint",
+        "assessed_urgency": "High",
+        "extracted_information": {},
+        "full_email_preview": "From: Jane Smith <jane.s@example.net>
+Subject: Complaint about Order #ORD12345
+
+I am writing to complain about my recent order, ORD12345.
+The product arrived damaged and is unusable. This is unacceptable.
+I expect a full refund or a replacement shipped immediately.
+This is very urgent!..."
+}
+SharedMemory: Retrieved entry ID 255b25d7-5b41-4442-bc65-106b43623a87.
+
+Processing ID: 255b25d7-5b41-4442-bc65-106b43623a87
+   Input Source: Raw JSON Order Data
+   Entry Time: 2025-05-31T17:49:11.507875+00:00
+   Detected Format: JSON
+   Classified Intent: Other
+   Classifier Status: Classified
+   Last Updated: 2025-05-31T17:49:11.507875+00:00
+   Agent Stages:
+     Agent: ClassifierAgent
+       status_classifier: Classified
+       input_source: Raw JSON Order Data
+       detected_format: JSON
+       classified_intent: Other
+       raw_content_preview: {"order_id": "ORD-XYZ", "customer_details": {"name": "Raw JSON Test Inc.", "email": "test@raw.com"}, "items_ordered": [{"sku": "SKU005", "quantity": 1}], "status": "Pending Review"}
+       text_used_for_intent: {"order_id": "ORD-XYZ", "customer_details": {"name": "Raw JSON Test Inc.", "email": "test@raw.com"}, "items_ordered": [{"sku": "SKU005", "quantity": 1}], "status": "Pending Review"}
+       timestamp: 2025-05-31T17:49:11.507875+00:00
+     Agent: JSONAgent
+       status: Processed with anomalies
+       intent_received: Other
+       timestamp: 2025-05-31T17:49:11.507875+00:00
+       extracted_fields:
+{
+        "order_id": "ORD-XYZ",
+        "customer_details": {
+                "name": "Raw JSON Test Inc.",
+                "email": "test@raw.com"
+        },
+        "items_ordered": [
+                {
+                        "sku": "SKU005",
+                        "quantity": 1
+                }
+        ],
+        "status": "Pending Review"
+}
+       anomalies_or_missing_fields:
+[
+        "No schema defined for intent: Other. Performing generic extraction."
+]
+SharedMemory: Retrieved entry ID a14cb4e9-1444-4e7d-a52f-86c396ebb1a7.
+
+Processing ID: a14cb4e9-1444-4e7d-a52f-86c396ebb1a7
+   Input Source: Raw Email Inquiry
+   Entry Time: 2025-05-31T17:49:11.508879+00:00
+   Detected Format: Email
+   Classified Intent: Inquiry
+   Classifier Status: Classified
+   Last Updated: 2025-05-31T17:49:11.508879+00:00
+   Agent Stages:
+     Agent: ClassifierAgent
+       status_classifier: Classified
+       input_source: Raw Email Inquiry
+       detected_format: Email
+       classified_intent: Inquiry
+       raw_content_preview: From: noreply@example.com
+Subject: General Inquiry
+
+Hello, I have a question about your services. Can you tell me more about topic Z?
+       text_used_for_intent: From: noreply@example.com
+Subject: General Inquiry
+
+Hello, I have a question about your services. Can you tell me more about topic Z?
+       timestamp: 2025-05-31T17:49:11.508879+00:00
+     Agent: EmailAgent
+       status: Processed
+       intent_received: Inquiry
+       timestamp: 2025-05-31T17:49:11.508879+00:00
+       sender: noreply@example.com
+       urgency: Low
+       llm_extracted_details:
+{
+        "raw_content_summary": "From: noreply@example.com
+Subject: General Inquiry
+
+Hello, I have a question about your services. Can you tell me more about topic Z?..."
+}
+       crm_style_output:
+{
+        "source_email_sender": "noreply@example.com",
+        "detected_intent": "Inquiry",
+        "assessed_urgency": "Low",
+        "extracted_information": {
+                "raw_content_summary": "From: noreply@example.com
+Subject: General Inquiry
+
+Hello, I have a question about your services. Can you tell me more about topic Z?..."
+        },
+        "full_email_preview": "From: noreply@example.com
+Subject: General Inquiry
+
+Hello, I have a question about your services. Can you tell me more about topic Z?..."
+}
+SharedMemory: Retrieved entry ID bde55650-6a0e-40fe-bfbf-50461ed691c5.
+
+Processing ID: bde55650-6a0e-40fe-bfbf-50461ed691c5
+   Input Source: PDF Document File
+   Entry Time: 2025-05-31T17:49:11.508879+00:00
+   Detected Format: PDF
+   Classified Intent: Other
+   Classifier Status: Classified
+   Last Updated: 2025-05-31T17:49:11.735209+00:00
+   Agent Stages:
+     Agent: ClassifierAgent
+       status_classifier: Classified
+       input_source: PDF Document File
+       detected_format: PDF
+       classified_intent: Other
+       raw_content_preview:
+
+       text_used_for_intent:
+
+       timestamp: 2025-05-31T17:49:11.735209+00:00
+     Agent: PDFAgent_Placeholder
+       status: Classified (No dedicated processing agent)
+       notes: PDF content was used by Classifier for intent. Add PDF Agent for more.
+       timestamp: 2025-05-31T17:49:11.735209+00:00
+
+--- Demo Finished ---
